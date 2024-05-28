@@ -1,0 +1,92 @@
+<!-- public/patient.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Data</title>
+  <style>
+     body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .card {
+      background-color: #baf2f5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 100px;
+      padding: 40px;
+      width: 300px; /* Adjust the width based on your preference */
+      text-align: center;
+    }
+
+    .flx{
+      display: flex;
+      gap: 70px;
+    }
+
+    #gasData{
+      justify-content: center;
+
+    }
+  </style>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+  <h1>Patient Data</h1>
+  <div class="flx">
+    <div id="patientData"></div>
+    <div style="width: 600px; height: 700px; margin-top:150px;">
+      <h2>Todays Graph</h2>
+  
+      <canvas id="patientChart"></canvas>
+    </div>
+  </div>
+
+  <script src="js/script.js" defer></script>
+
+
+  <script>
+    // Patient data
+    var patientData = {
+        labels: ['Heart Rate', 'Blood Pressure', 'Body Temperature', 'Oxygen Saturation', 'Glucose Levels'],
+        datasets: [{
+            label: 'Patient Data',
+            data: [78, 80, 98.6, 98, 90],
+            backgroundColor: 'rgba(75, 192, 192, 0.6)', // Adjust the color as needed
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+    
+    // Get the canvas element
+    var ctx = document.getElementById('patientChart').getContext('2d');
+    
+    // Create a bar chart
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: patientData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            text-align: center;
+        }
+
+        .header {
+            font-size: 32px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+            color: #000000;
+            position: fixed;
+            top: 8%;
+            left:4%;
+            text-align: right;
+           
+
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .temperature {
+            background-color: #ffcc00;
+            height: 200px;
+        }
+
+        .gas {
+            background-color: #ff6666;
+        }
+
+        .patient {
+            background-color: #66b3ff;
+        }
+
+        .appliances {
+            background-color: #99ff99;
+            height: 200px;
+
+        }
+
+        .account-section {
+            position: fixed;
+            top: 20px;
+            right: 35px;
+            text-align: right;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .btn{
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 13px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 20px;
+            border: #000000 solid 2px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">Dashboard</div>
+
+    </div>
+
+    <div class="account-section">
+        <img src="profile.png" alt="Profile Picture" class="profile-picture">
+        <br>
+        <span>My Profile</span>
+    </div>
+
+    
+
+    <div class="dashboard">
+        <br><br><br><br>
+        
+
+        <div class="cards-container">
+            <div class="card temperature" >
+                <h2>Temperature</h2>
+                <p>Current: 28°C</p>
+
+                <a href="http://localhost/iot/index.html"><button class="btn">Click to view details</button></a>
+            </div>
+
+            <div class="card gas">
+                <h2>Gas Detector</h2>
+                <p>Status: Normal</p>
+                <a href="gas.html"><button class="btn">Click to view details</button></a>
+            </div>
+
+            <div class="card patient">
+                <h2>Patient Monitoring</h2>
+                <p>Heart Rate: 75 bpm</p>
+                <a href="patient.html"><button class="btn">Click to view details</button></a>
+            </div>
+
+            <div class="card appliances">
+                <h2>Electrical Appliances</h2>
+                <p>Living Room Lights: Off</p>
+                <a href="electrical.html"><button class="btn">Click to view details</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

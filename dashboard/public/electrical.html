@@ -1,0 +1,127 @@
+<!-- public/electrical.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrical Data</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .card {
+      background-color: #a8eef6;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 100px;
+      padding: 40px;
+      width: 300px; /* Adjust the width based on your preference */
+      text-align: center;
+    }
+
+    .device-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top:180px;
+            
+            
+        }
+
+        .device {
+            margin: 20px;
+        }
+
+        .device img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .device p {
+            margin: 10px 0;
+        }
+
+       
+
+        .flx{
+          display: flex;
+        }
+
+        button{
+          width: 50px;
+          height: 40px;
+          border-radius: 50%;
+        }
+
+        .status{
+          position: relative;
+          top: 25%;
+          left: 40%;
+        }
+  </style>
+</head>
+<body>
+  <h1>Electrical Appliances Monitoring</h1>
+  <h2 class="status">Current Status:</h2>
+  <div class="flx">
+
+    <div id="electricalData"></div>
+
+
+  <div class="device-container">
+    
+    <div class="device">
+      
+        <img src="assets/bulb.webp" alt="Bulb"><br><br>
+        <center><button style="background-color: greenyellow;">ON</button></center>
+    </div>
+
+    <div class="device">
+        <img src="assets/fan-removebg-preview.png" alt="Fan"><br><br>
+        <center><button style="background-color: greenyellow;">ON</button></center>
+
+    </div>
+
+    <div class="device">
+        <img src="assets/washing-machine.webp" alt="Washing Machine"><br><br>
+        <center><button style="background-color:  rgb(255, 123, 47);">OFF</button></center>
+
+    </div>
+
+    <div class="device">
+        <img src="assets/tv-removebg-preview.png" alt="TV"><br><br>
+        <center><button style="background-color: greenyellow;">ON</button></center>
+
+    </div>
+
+    <div class="device">
+        <img src="assets/ac-removebg-preview.png" alt="AC"><br><br>
+        <center><button style="background-color: rgb(255, 123, 47);">OFF</button></center>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+  <script src="js/script.js" defer></script>
+
+  
+  
+</body>
+</html>

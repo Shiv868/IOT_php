@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature and Humidity Monitor</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sensor-data">
+    <h2>Current Sensor Data</h2>
+    <p id="temperature">Temperature: Loading...</p>
+    <p id="humidity">Humidity: Loading...</p>
+  </div>
+  <canvas id="myChart" class="i"></canvas>
+
+  <script>
+    function fetchData() {
+      fetch('http://localhost/iot/fetch_data.php')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById('temperature').innerText = 'Temperature: ' + data.temperature + ' °C';
+          document.getElementById('humidity').innerText = 'Humidity: ' + data.humidity + ' %';
+
+          updateChart(data.temperature, data.humidity);
+        })
+        .catch(error => console.error('Error fetching sensor data:', error));
+    }
+
+    function updateChart(temperature, humidity) {
+      var timestamp = getCurrentTimestamp();
+
+      myChart.data.labels.push(timestamp);
+      myChart.data.datasets[0].data.push(parseFloat(temperature));
+      myChart.data.datasets[1].data.push(parseFloat(humidity));
+
+      if (myChart.data.labels.length > 5) {
+        myChart.data.labels.shift(); 
+        myChart.data.datasets[0].data.shift();  
+        myChart.data.datasets[1].data.shift();  
+      }
+
+      myChart.update(); 
+    }
+
+    function getCurrentTimestamp() {
+      var now = new Date();
+      return now.toISOString().slice(0, 19).replace("T", " ");
+    }
+
+    function updateTimestamps() {
+      fetch('http://localhost/iot/fetch_data.php')  
+      
+        .then(response => response.json())
+        .then(data => {
+          updateChart(data.temperature, data.humidity);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+
+      setTimeout(updateTimestamps, 1000); 
+      
+    }
+
+
+    var data = {
+      labels: [],
+      datasets: [
+        {
+          label: 'Temperature',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          data: [],
+        },
+        {
+          label: 'Humidity',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          data: [],
+        },
+      ]
+    };
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: data,
+      options: {
+        scales: {
+          x: [{
+            type: 'category',
+            title: {
+              display: true,
+              text: 'Time',
+              fontSize: 25  
+              
+            },
+            ticks: {
+              fontSize: 140  
+              
+            }
+          }],
+          y: {
+            title: {
+              display: true,
+              text: 'Value',
+              fontSize: 16  
+              
+            },
+            ticks: {
+              fontSize: 14  
+              
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              fontSize: 14  
+              
+            }
+          }
+        }
+      }
+    });
+    updateTimestamps();
+    fetchData(); 
+    
+
+    setInterval(fetchData, 2000); 
+    
+  </script>
+</body>
+</html>

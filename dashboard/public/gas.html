@@ -1,0 +1,117 @@
+<!-- public/gas.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gas Data</title>
+  <style>
+     body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .card {
+      background-color: #adeaede3;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 100px;
+      padding: 40px;
+      width: 300px; /* Adjust the width based on your preference */
+      text-align: center;
+    }
+    .flx{
+      display: flex;
+      gap: 70px;
+    }
+
+    #gasData{
+      justify-content: center;
+
+    }
+  </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  
+</head>
+<body>
+  <h1>Gas Data</h1>
+  <div class="flx">
+  <div id="gasData"></div>
+  <div style="width: 600px; height: 700px; margin-top:150px;">
+    <h2>Week Graph</h2>
+
+    <canvas id="lpgChart"></canvas>
+  </div>
+</div>
+   
+
+<script>
+  // Your LPG concentration values
+  const concentrations = [13.7,10.8, 15.2, 8.2, 12.5];
+
+  // Get the canvas element
+  const ctx = document.getElementById('lpgChart').getContext('2d');
+
+  // Create a line chart
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['1', '2', '3', '4', '5'],
+      datasets: [{
+        label: 'LPG Concentration vs Level',
+        data: concentrations,
+        borderColor: 'blue',
+        borderWidth: 2,
+        fill: false
+      }]
+    },
+    options: {
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          title: {
+            display: true,
+            text: 'LPG Concentration'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Level'
+          }
+        }
+      }
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+  <script src="js/script.js" defer></script>
+
+
+  
+
+
+  
+</body>
+</html>

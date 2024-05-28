@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .sensor-data {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  p {
+    margin: 10px 0;
+  }
+.i{
+  height: 400px!important;
+  width: 800px!important;
+  margin-left: 25vw;
+
+}
+  
